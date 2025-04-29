@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  products-service:
+    build:
+      context: ./products-service
+    ports:
+      - "3000:3000"
+    container_name: products-service
