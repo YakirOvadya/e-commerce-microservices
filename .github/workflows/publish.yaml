@@ -2,7 +2,8 @@ name: Build and Push to GHCR
 
 on:
   push:
-    branches: [main]
+    branches:
+      - never-run-this
 
 jobs:
   build-and-push:
