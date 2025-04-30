@@ -16,5 +16,8 @@ COPY . .
 # Expose the application port
 EXPOSE 3000
 
+# Run as non-root (for OpenShift compatibility)
+USER node
+
 # Command to run the application
 CMD ["npm", "start"]

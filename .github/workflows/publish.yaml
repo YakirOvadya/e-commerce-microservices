@@ -20,7 +20,7 @@ jobs:
         run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/${{ github.repository_owner }}/products-service:latest ./products-service
+        run: docker build -t ghcr.io/${{ secrets.REPO_NAME }}/products-service:latest ./products-service
 
       - name: Push Docker image
-        run: docker push ghcr.io/${{ github.repository_owner }}/products-service:latest
+        run: docker push ghcr.io/${{ secrets.REPO_NAME }}/products-service:latest
