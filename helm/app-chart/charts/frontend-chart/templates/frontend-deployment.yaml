@@ -18,9 +18,3 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.service.targetPort }}
-          volumeMounts:
-            - name: nginx-temp
-              mountPath: /tmp/nginx
-      volumes:
-        - name: nginx-temp
-          emptyDir: {}

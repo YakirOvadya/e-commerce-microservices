@@ -1,26 +1,25 @@
 # Build stage
 FROM node:18-alpine AS builder
 
-# Set working directory
 WORKDIR /app
 
-# Copy all files and install dependencies
 COPY . .
+
 RUN npm install && npm run build
 
-# Production stage
-FROM nginx:alpine
+# Production stage using unprivileged NGINX for OpenShift
+FROM nginxinc/nginx-unprivileged:alpine
 
-# Create writable temp directories for NGINX
-RUN mkdir -p /tmp/nginx && chmod -R 777 /tmp/nginx
-
-# Copy built frontend assets
+# Copy built React app
 COPY --from=builder /app/build /usr/share/nginx/html
 
-# Copy custom NGINX config
-COPY ./conf/nginx.conf /etc/nginx/conf.d/default.conf
+# Copy custom NGINX configuration
+COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
+# Run container on unprivileged port
+EXPOSE 8080
 
-# Start NGINX in the foreground
+# Run as non-root user (required by OpenShift)
+USER 1001
+
 CMD ["nginx", "-g", "daemon off;"]
