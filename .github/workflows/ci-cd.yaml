@@ -1,6 +1,7 @@
 name: CI/CD Pipeline - Build and Deploy to OpenShift
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
