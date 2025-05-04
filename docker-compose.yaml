@@ -2,7 +2,25 @@ version: '3.8'
 services:
   products-service:
     build:
-      context: ./products-service
+      context: ./services/products-service
     ports:
       - "3000:3000"
     container_name: products-service
+
+  users-service:
+    container_name: users-service
+    build:
+      context: ./services/users-service
+    environment:
+      - MONGO_URI=${MONGO_URI}
+    ports:
+      - "3001:3001"
+  
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - products-service
+      - users-service

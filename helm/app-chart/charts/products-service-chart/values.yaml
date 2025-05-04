@@ -1,0 +1,12 @@
+# values.yaml
+replicaCount: 1
+
+image:
+  repository: ghcr.io/YakirOvadya/products-service
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  port: 80
+  targetPort: 3000
+  type: ClusterIP

@@ -1,0 +1,17 @@
+{
+  "name": "users-service",
+  "version": "1.0.0",
+  "description": "Node.js microservice for managing users data.",
+  "main": "users-app.js",
+  "scripts": {
+    "start": "node users-app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yakir Ovadya",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.14.1"
+  }
+}
