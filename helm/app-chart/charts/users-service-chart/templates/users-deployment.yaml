@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: users-service
 spec:
-  replicas: { { .Values.replicaCount } }
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: users-service
@@ -16,9 +16,9 @@ spec:
       containers:
         - name: users-service
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: { { .Values.image.pullPolicy } }
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: { { .Values.service.targetPort } }
+            - containerPort: {{ .Values.service.targetPort }}
           env:
             - name: MONGO_URI
               valueFrom:
