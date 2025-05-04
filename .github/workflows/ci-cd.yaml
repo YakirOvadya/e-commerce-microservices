@@ -71,4 +71,4 @@ jobs:
 
       - name: Deploy with Helm
         run: |
-          helm upgrade --install app ./helm/app-chart --namespace yakprog-dev --create-namespace
+          helm upgrade --install app ./helm/app-chart --namespace yakprog-dev
