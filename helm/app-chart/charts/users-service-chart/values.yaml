@@ -2,7 +2,7 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/YakirOvadya/users-service
+  repository: ghcr.io/yakirovadya/users-service
   tag: latest
   pullPolicy: IfNotPresent
 
