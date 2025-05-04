@@ -23,6 +23,7 @@ jobs:
 
       - name: Build and Push products-service
         run: |
+          echo "${{ secrets.REPO_NAME }}"
           docker build -t ghcr.io/${{ secrets.REPO_NAME }}/products-service:latest ./services/products-service
           docker push ghcr.io/${{ secrets.REPO_NAME }}/products-service:latest
 
