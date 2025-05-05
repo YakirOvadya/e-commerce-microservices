@@ -7,19 +7,14 @@ COPY . .
 
 RUN npm install && npm run build
 
-# Production stage using unprivileged NGINX for OpenShift
-FROM nginxinc/nginx-unprivileged:alpine
+# Production stage
+FROM nginxinc/nginx-unprivileged:1.25-alpine
 
-# Copy built React app
 COPY --from=builder /app/build /usr/share/nginx/html
 
-# Copy custom NGINX configuration
 COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
 
-# Run container on unprivileged port
 EXPOSE 8080
-
-# Run as non-root user (required by OpenShift)
-USER 1001
+USER 101
 
 CMD ["nginx", "-g", "daemon off;"]
