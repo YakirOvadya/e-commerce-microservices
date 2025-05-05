@@ -1,4 +1,4 @@
-FROM node:lts-alpine as builder
+FROM node:18-slim AS builder
 
 WORKDIR /app
 
@@ -10,12 +10,10 @@ COPY . .
 
 RUN npm run build
 
-FROM nginx:1.19-alpine
+FROM nginxinc/nginx-unprivileged
 
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY ./build /usr/share/nginx/html
+COPY ./conf/default.conf /etc/nginx/conf.d/default.conf
 
-COPY ./conf/nginx.conf /etc/nginx/conf.d/default.conf
-
-EXPOSE 80
-
-CMD [ "nginx", "-g", "daemon off;" ]
+EXPOSE 8080
+CMD ["nginx", "-g", "daemon off;"]
