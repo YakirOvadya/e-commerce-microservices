@@ -1,0 +1,15 @@
+#values.yaml
+users-service:
+  image:
+    tag: latest
+
+products-service:
+  image:
+    tag: latest
+
+frontend:
+  image:
+    tag: latest
+  route:
+    enabled: true
+    host: ""
