@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("/products")
+      .get("http://products-service:3000/products")
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Error fetching products:", err));
   }, []);
@@ -28,7 +28,10 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("/users/register", { ...form, products: selectedProducts })
+      .post("http://users-service:3001/api/auth/register", {
+        ...form,
+        products: selectedProducts,
+      })
       .then(() => {
         alert("User registered!");
         setForm({ username: "", email: "", password: "" });
@@ -42,7 +45,7 @@ function App() {
 
   const handleSearch = () => {
     axios
-      .get(`/users/login/${searchUsername}`)
+      .get(`http://users-service:3001/api/auth/login/${searchUsername}`)
       .then((res) => setFoundUser(res.data))
       .catch(() => {
         alert("User not found.");
