@@ -10,9 +10,9 @@ spec:
     name: frontend
   port:
     targetPort: {{ .Values.service.targetPort }}
+  {{- if .Values.route.tls.enabled }}
   tls:
-    termination: edge
-  {{- if .Values.route.host }}
-  host: {{ .Values.route.host }}
+    termination: {{ .Values.route.tls.termination }}
   {{- end }}
+  wildcardPolicy: None
 {{- end }}

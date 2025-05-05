@@ -1,20 +1,14 @@
-# Build stage
-FROM node:18-alpine AS builder
+# Build Stage
+FROM node:18-slim AS builder
 
 WORKDIR /app
-
 COPY . .
-
 RUN npm install && npm run build
 
-# Production stage
-FROM nginxinc/nginx-unprivileged:1.25-alpine
-
+# Production Stage
+FROM nginx:alpine
 COPY --from=builder /app/build /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
-
-EXPOSE 8080
-USER 101
-
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

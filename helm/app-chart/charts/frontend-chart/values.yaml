@@ -7,9 +7,10 @@ image:
 
 service:
   port: 80
-  targetPort: 8080
-  type: ClusterIP
+  targetPort: 80
 
 route:
   enabled: true
-  host: ""
+  tls:
+    enabled: true
+    termination: edge
