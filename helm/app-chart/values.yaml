@@ -1,3 +1,4 @@
+#values.yaml
 users-service:
   image:
     tag: latest

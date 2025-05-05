@@ -1,3 +1,4 @@
+#Chart.yaml
 apiVersion: v2
 name: app
 description: Umbrella chart for the full e-commerce app
