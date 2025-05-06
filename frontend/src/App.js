@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("/products")
+      .get("/products-service/products")
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Error fetching products:", err));
   }, []);
