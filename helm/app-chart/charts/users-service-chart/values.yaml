@@ -7,6 +7,6 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  port: 3001
+  port: 80
   targetPort: 3001
   type: ClusterIP
