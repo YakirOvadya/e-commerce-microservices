@@ -13,7 +13,9 @@ RUN npm run build
 FROM nginxinc/nginx-unprivileged
 
 COPY --from=builder /app/build /usr/share/nginx/html
-COPY ./conf/default.conf /etc/nginx/conf.d/default.conf
+COPY ./default.conf /etc/nginx/conf.d/default.conf
+
+RUN echo "--- CURRENT NGINX CONF ---" && cat /etc/nginx/conf.d/default.conf
 
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
