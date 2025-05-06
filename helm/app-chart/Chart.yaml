@@ -12,7 +12,7 @@ dependencies:
     repository: "file://charts/users-service-chart"
   - name: prod-service
     version: 0.1.0
-    repository: "file://charts/products-service-chart"
+    repository: "file://charts/prod-service-chart"
   - name: frontend
     version: 0.1.0
     repository: "file://charts/frontend-chart"

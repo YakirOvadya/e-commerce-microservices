@@ -1,10 +1,10 @@
 {
-  "name": "products-service",
+  "name": "prod-service",
   "version": "1.0.0",
   "description": "Node.js microservice for managing product data.",
-  "main": "products-app.js",
+  "main": "prod-app.js",
   "scripts": {
-    "start": "node products-app.js",
+    "start": "node prod-app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Yakir Ovadya",
