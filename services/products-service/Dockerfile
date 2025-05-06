@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Expose the application port
-EXPOSE 3000
+EXPOSE 3002
 
 # Run as non-root (for OpenShift compatibility)
 USER node

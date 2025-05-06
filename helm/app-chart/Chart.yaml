@@ -10,7 +10,7 @@ dependencies:
   - name: users-service
     version: 0.1.0
     repository: "file://charts/users-service-chart"
-  - name: products-service
+  - name: prod-service
     version: 0.1.0
     repository: "file://charts/products-service-chart"
   - name: frontend

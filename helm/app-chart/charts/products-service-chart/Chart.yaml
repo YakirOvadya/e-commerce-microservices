@@ -1,6 +1,6 @@
 # Chart.yaml
 apiVersion: v2
-name: products-service
+name: prod-service
 description: A Helm chart for deploying the products microservice
 type: application
 version: 0.1.0

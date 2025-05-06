@@ -2,19 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: products-service
+  name: prod-service
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: products-service
+      app: prod-service
   template:
     metadata:
       labels:
-        app: products-service
+        app: prod-service
     spec:
       containers:
-        - name: products-service
+        - name: prod-service
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:

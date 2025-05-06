@@ -3,7 +3,7 @@ users-service:
   image:
     tag: latest
 
-products-service:
+prod-service:
   image:
     tag: latest
 

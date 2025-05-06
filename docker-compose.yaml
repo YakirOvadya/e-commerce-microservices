@@ -4,7 +4,7 @@ services:
     build:
       context: ./services/products-service
     ports:
-      - "3000:3000"
+      - "3002:3002"
     container_name: products-service
 
   users-service:
