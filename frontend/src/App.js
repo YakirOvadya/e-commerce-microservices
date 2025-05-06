@@ -10,9 +10,9 @@ function App() {
   const [foundUser, setFoundUser] = useState(null);
 
   useEffect(() => {
-    console.log("/products-service/");
+    console.log("/products");
     axios
-      .get("products-service/products")
+      .get("/products")
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Error fetching products:", err));
   }, []);
