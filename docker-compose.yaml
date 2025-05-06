@@ -1,11 +1,11 @@
 version: '3.8'
 services:
-  products-service:
+  prod-service:
     build:
-      context: ./services/products-service
+      context: ./services/prod-service
     ports:
       - "3002:3002"
-    container_name: products-service
+    container_name: prod-service
 
   users-service:
     container_name: users-service
@@ -22,5 +22,5 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - products-service
+      - prod-service
       - users-service
