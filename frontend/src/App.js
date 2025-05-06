@@ -10,7 +10,6 @@ function App() {
   const [foundUser, setFoundUser] = useState(null);
 
   useEffect(() => {
-    console.log("/products");
     axios
       .get("/products")
       .then((res) => setProducts(res.data))
