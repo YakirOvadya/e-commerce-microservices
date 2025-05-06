@@ -2,6 +2,8 @@ const express = require("express");
 
 const app = express();
 
+const productsRoute = require("./routes/productsRoute");
+
 app.use(express.json()); // instead of bodyParser
 
 app.use((req, res, next) => {
@@ -11,14 +13,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/products", (req, res) => {
-  const products = [
-    { id: 1, name: "Laptop" },
-    { id: 2, name: "Smartphone" },
-  ];
-  res.status(200).json(products);
-});
+app.use("/api/auth", productsRoute);
 
-app.listen(3000, () => {
-  console.log("Products service listening on port 3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Users service running on port ${PORT}`);
 });

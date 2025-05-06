@@ -9,12 +9,12 @@ function App() {
   const [searchUsername, setSearchUsername] = useState("");
   const [foundUser, setFoundUser] = useState(null);
 
-  // useEffect(() => {
-  //   axios
-  //     .get("/products-service/products")
-  //     .then((res) => setProducts(res.data))
-  //     .catch((err) => console.error("Error fetching products:", err));
-  // }, []);
+  useEffect(() => {
+    axios
+      .get("/prod/products")
+      .then((res) => setProducts(res.data))
+      .catch((err) => console.error("Error fetching products:", err));
+  }, []);
 
   const toggleProduct = (product) => {
     const exists = selectedProducts.find((p) => p.id === product.id);
