@@ -1,5 +1,5 @@
 # Build stage
-FROM node:18-slim AS builder
+FROM node:22-alpine AS builder
 
 WORKDIR /app
 
@@ -10,12 +10,12 @@ COPY . .
 RUN npm run build
 
 # Production stage
-FROM nginxinc/nginx-unprivileged
+FROM nginx:1.19-alpine
 
 COPY --from=builder /app/build /usr/share/nginx/html
-COPY ./config/default.conf /etc/nginx/conf.d/default.conf
 
-RUN echo "--- CURRENT NGINX CONF ---" && cat /etc/nginx/conf.d/default.conf
+COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 8080
-CMD ["nginx", "-g", "daemon off;"]
+
+CMD [ "nginx", "-g", "daemon off;" ]
