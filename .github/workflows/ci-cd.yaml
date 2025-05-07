@@ -33,10 +33,10 @@ jobs:
           docker build --no-cache -t ghcr.io/${{ secrets.REPO_NAME }}/users-service:latest ./services/users-service
           docker push ghcr.io/${{ secrets.REPO_NAME }}/users-service:latest
 
-      - name: Build and Push frontend
+      - name: Build and Push frontend-new
         run: |
-          docker build --no-cache -t ghcr.io/${{ secrets.REPO_NAME }}/frontend:latest ./frontend
-          docker push ghcr.io/${{ secrets.REPO_NAME }}/frontend:latest
+          docker build --no-cache -t ghcr.io/${{ secrets.REPO_NAME }}/frontend-new:latest ./frontend
+          docker push ghcr.io/${{ secrets.REPO_NAME }}/frontend-new:latest
 
   deploy:
     name: Deploy to OpenShift using Helm

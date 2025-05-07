@@ -13,7 +13,7 @@ RUN npm run build
 FROM nginxinc/nginx-unprivileged
 
 COPY --from=builder /app/build /usr/share/nginx/html
-COPY ./default.conf /etc/nginx/conf.d/default.conf
+COPY ./config/default.conf /etc/nginx/conf.d/default.conf
 
 RUN echo "--- CURRENT NGINX CONF ---" && cat /etc/nginx/conf.d/default.conf
 
