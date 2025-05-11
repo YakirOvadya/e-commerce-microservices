@@ -10,7 +10,7 @@ COPY . .
 RUN npm run build
 
 # Production stage
-FROM nginx:1.19-alpine
+FROM nginxinc/nginx-unprivileged
 
 COPY --from=builder /app/build /usr/share/nginx/html
 
