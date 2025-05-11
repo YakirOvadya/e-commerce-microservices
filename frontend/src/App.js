@@ -10,10 +10,17 @@ function App() {
   const [foundUser, setFoundUser] = useState(null);
 
   useEffect(() => {
-    axios
-      .get("http://prod-service:3002/api/auth/products")
-      .then((res) => setProducts(res.data))
-      .catch((err) => console.error("Error fetching products:", err));
+    const fetchProducts = async () => {
+      try {
+        const res = await axios.get(
+          "http://prod-service:3002/api/auth/products"
+        );
+        setProducts(res.data);
+      } catch (err) {
+        console.error("Error fetching products from prod-service:", err);
+      }
+    };
+    fetchProducts();
   }, []);
 
   const toggleProduct = (product) => {
@@ -25,32 +32,33 @@ function App() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://users-service:3001/api/auth/register", {
+    try {
+      await axios.post("http://users-service:3001/api/auth/register", {
         ...form,
         products: selectedProducts,
-      })
-      .then(() => {
-        alert("User registered!");
-        setForm({ username: "", email: "", password: "" });
-        setSelectedProducts([]);
-      })
-      .catch((err) => {
-        console.error("Registration error:", err);
-        alert("Registration failed.");
       });
+      alert("User registered!");
+      setForm({ username: "", email: "", password: "" });
+      setSelectedProducts([]);
+    } catch (err) {
+      console.error("Registration error in users-service:", err);
+      alert("Registration failed.");
+    }
   };
 
-  const handleSearch = () => {
-    axios
-      .get(`http://users-service:3001/api/auth/login/${searchUsername}`)
-      .then((res) => setFoundUser(res.data))
-      .catch(() => {
-        alert("User not found.");
-        setFoundUser(null);
-      });
+  const handleSearch = async () => {
+    try {
+      const res = await axios.get(
+        `http://users-service:3001/api/auth/login/${searchUsername}`
+      );
+      setFoundUser(res.data);
+    } catch (err) {
+      console.error("User search error in users-service:", err);
+      alert("User not found.");
+      setFoundUser(null);
+    }
   };
 
   return (
