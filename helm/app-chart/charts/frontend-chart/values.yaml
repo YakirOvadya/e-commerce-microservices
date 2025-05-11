@@ -2,7 +2,7 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/yakirovadya/frontend
+  repository: ghcr.io/yakirovadya/frontend-new
   tag: latest
   pullPolicy: IfNotPresent
 
