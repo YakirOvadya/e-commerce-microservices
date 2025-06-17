@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://prod-service:3002/api/auth/products")
+      .get("/api/products/")
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Error fetching products:", err));
   }, []);
@@ -28,7 +28,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://users-service:3001/api/auth/register", {
+      .post("/api/users/register", {
         ...form,
         products: selectedProducts,
       })
@@ -45,7 +45,7 @@ function App() {
 
   const handleSearch = () => {
     axios
-      .get(`http://users-service:3001/api/auth/login/${searchUsername}`)
+      .get(`/api/users/login/${searchUsername}`)
       .then((res) => setFoundUser(res.data))
       .catch(() => {
         alert("User not found.");
